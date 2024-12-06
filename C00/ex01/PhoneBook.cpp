@@ -1,90 +1,35 @@
+#include "PhoneBook.hpp"
+
 #include <iostream>
+#include <string>
+#include <iomanip>
 
-class contact
+std::string GetSubInput(std::string &input)
 {
-    private :
-        std::string FristName;
-        std::string LastName;
-        std::string NickName;
-        std::string NbPhone;
-        std::string Secret;
-    public :
-        void get_data()
-        {
-            std::cout << "Enter First Name: ";
-            std::getline(std::cin, FristName);
-            std::cout << "Enter Last Name: ";
-            std::getline(std::cin, LastName);
-            std::cout << "Enter Nickname: ";
-            std::getline(std::cin, NickName);
-            std::cout << "Enter Phone Number: ";
-            std::getline(std::cin, NbPhone);
-            std::cout << "Enter Darkest Secret: ";
-            std::getline(std::cin, Secret);
-        }
-        void PrintData()
-        {
-            std::cout << "-------------------------------------------------------" << std::endl;
-            std::cout << FristName << std::endl;
-            std::cout << LastName << std::endl;
-            std::cout << NickName << std::endl;
-            std::cout << NbPhone << std::endl;
-            std::cout << Secret << std::endl;
-        }
-
-};
-class PhoneBook
-{
-    private :
-        contact cnt[8];
-        int index;
-
-    public :
-        PhoneBook() : index(0){}
-        void AddContact()
-        {
-            if (index > 8)
-                index = 0;
-            cnt[index].get_data();
-            index += 1;   
-        }
-        void print_contact()
-        {
-            int i  = 0;
-            while (i < index)
-            {
-                cnt[i].PrintData();
-                i++;
-            }
-        }
-};
-void InputPhoneBook()
-{
-    std::cout << "*_________ PHONE BOOK _________*" << std::endl;
-    std::cout << "ADD --> save a new contact\nSEARCH --> display a specific contact\nEXIT --> exit phone book" << std::endl;
-    std::cout << "Enter here ::"; 
-
-}
-int main (void)
-{
-    PhoneBook book;
-    std::string input;
-    bool look = true;
-    while (look)
-    {   InputPhoneBook();
-        std::getline(std::cin, input);
-        if("ADD" == input)
-        {
-            book.AddContact();
-            std::cout << "Add" << std::endl;
-        }
-        else if("SEARCH" == input)
-        {
-            book.print_contact();
-            std::cout << "SEARCH" << std::endl; 
-        }
-        else if("EXIT" == input)
-            look = false;
+    if(input.length() > 10)
+    {
+        return input.substr(0,9) + ".";
     }
-    std::cout << "GOOD BYE LOVE U" << std::endl; 
+      return input;
 }
+
+void PhoneBook::PrintAllContact()
+{
+    int i = 0;
+        std::cout << "|"<< std::setw(10) << std::left << "Index" << "|"
+          << std::setw(10) << std::left << "First Name" << "|"
+          << std::setw(10) << std::left << "Last Name" << "|"
+          << std::setw(10) << std::left << "Nickname" << "|"
+          << std::endl;
+        std::cout << std::string(55, '-') << std::endl;
+    while(i < 8)
+    {   
+        if (cnt[i].is_valide()) {
+            // std::cout << i << std::endl;
+            cnt[i].print_contact(i);
+        }
+        i++;
+    }
+}
+
+
