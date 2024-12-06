@@ -4,24 +4,18 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
-// #include "Contact.hpp"
-class Contact;  // Forward declaration instead of #include "Contact.hpp"
+#include "Contact.hpp"
 
-class PhoneBook
-{
+class Contact;  // Forward declaration
+
+class PhoneBook {
 private:
-    Contact cnt[8];
+    Contact _cnt[8];
     int index;
 
 public:
-    PhoneBook() : index(0) {}
-
-    void AddContact()
-    {
-        cnt[index].SetData();
-        index = (index + 1) % 8;
-    }
-
+    PhoneBook();
+    void AddContact();
     void PrintAllContact();
 };
 
