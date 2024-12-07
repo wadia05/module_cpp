@@ -1,33 +1,26 @@
 #include <iostream>
-using namespace std;
+#include <iomanip>
+#include <ctime>
 
-class CRectangle {
-    int width, height; // Private members for dimensions
 
-public:
-    // Constructor to initialize width and height
-    Crectangle(int, int);
 
-    // Member function to calculate the area
-    int area() {
-        return width * height;
-    }
-};
+void displayTimestamp(void)
+{
+    std::time_t CurrTime = std::time(0);
+    std::tm*  localtime   = std::localtime(&CurrTime);
 
-// Define the constructor outside the class
-CRectangle::Crectangle(int a, int b) {
-    width = a;
-    height = b;
+    std::cout << "["
+            << 1900 + localtime->tm_year
+            << std::setfill('0')
+            << std::setw(2) << 1 + localtime->tm_mon
+            << std::setw(2) << localtime->tm_mday
+            << "_"
+            << std::setw(2) << localtime->tm_hour
+            << std::setw(2) << localtime->tm_min
+            << std::setw(2) << localtime->tm_sec
+            << "]";
 }
-
-int main() {
-    // Create two CRectangle objects with different dimensions
-    CRectangle rect(3, 4);    // Rectangle with width=3, height=4
-    CRectangle rectb(5, 6);   // Rectangle with width=5, height=6
-
-    // Call the area() function and display results
-    cout << "rect area: " << rect.area() << endl;    // Output: 12
-    cout << "rectb area: " << rectb.area() << endl;  // Output: 30
-
-    return 0; // Exit the program
+int main ()
+{
+    displayTimestamp();
 }

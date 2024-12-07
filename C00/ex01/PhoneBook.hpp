@@ -6,9 +6,10 @@
 #include <iomanip>
 #include "Contact.hpp"
 
-class Contact;  // Forward declaration
+class Contact; // Forward declaration
 
-class PhoneBook {
+class PhoneBook
+{
 private:
     Contact _cnt[8];
     int index;

@@ -23,18 +23,19 @@ void Contact::print_contact(int i)
 }
 void Contact::InedexContactPrint()
 {
-    std::cout << std::string (15 , '-') << std::endl; 
-    std::cout << "FristName : " << FristName << std::endl; 
-    std::cout << "LastName : " << LastName << std::endl; 
-    std::cout << "NickName : " << NickName << std::endl; 
-    std::cout << "Number Phone : " << NbPhone << std::endl; 
-    std::cout << "deep Secret : " << Secret << std::endl; 
-    std::cout << std::string (15 , '-') << std::endl; 
+    std::cout << std::string(15, '-') << std::endl;
+    std::cout << "FristName : " << FristName << std::endl;
+    std::cout << "LastName : " << LastName << std::endl;
+    std::cout << "NickName : " << NickName << std::endl;
+    std::cout << "Number Phone : " << NbPhone << std::endl;
+    std::cout << "deep Secret : " << Secret << std::endl;
+    std::cout << std::string(15, '-') << std::endl;
 }
 
 void Contact::IsValideIpout(const std::string &prompt, std::string &input)
 {
-    do {
+    do
+    {
         std::cout << prompt;
         std::getline(std::cin, input);
         if (std::cin.eof())

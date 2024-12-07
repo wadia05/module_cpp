@@ -14,7 +14,6 @@ std::string GetSubInput(std::string &input)
     return input;
 }
 
-
 void PhoneBook::AddContact()
 {
     _cnt[index].SetData();
@@ -24,14 +23,13 @@ void TableLine()
 {
     int i = 0;
     std::cout << "|";
-    while ( i < 4)
+    while (i < 4)
     {
         std::cout << std::string(10, '-');
         std::cout << "|";
         i++;
     }
     std::cout << std::endl;
-
 }
 
 void PhoneBook::ContactIndex(const std::string &prompt)
@@ -56,29 +54,35 @@ void PhoneBook::ContactIndex(const std::string &prompt)
     }
     else
     {
-        std::cout << "Wrong index. It should be between 0 - 7.\n" << std::endl;
+        std::cout << "Wrong index. It should be between 0 - 7.\n"
+                  << std::endl;
     }
 }
 void PhoneBook::PrintAllContact()
 {
     int i = 0;
-    if (_cnt[0].is_valide() == false){ std::cout << "empty list" << std::endl; return ;}
-    std::cout << std::string(45 , '-')<< std::endl;
+    if (_cnt[0].is_valide() == false)
+    {
+        std::cout << "empty list" << std::endl;
+        return;
+    }
+    std::cout << std::string(45, '-') << std::endl;
     std::cout << "|" << std::setw(10) << std::right << "Index" << "|"
               << std::setw(10) << std::right << "First Name" << "|"
               << std::setw(10) << std::right << "Last Name" << "|"
               << std::setw(10) << std::right << "Nickname" << "|"
               << std::endl;
     // TableLine();
-    
+
     while (i < 8)
-    {   
-        if (_cnt[i].is_valide()) {
+    {
+        if (_cnt[i].is_valide())
+        {
             TableLine();
             _cnt[i].print_contact(i);
         }
         i++;
     }
-    std::cout << std::string(45 , '-')<< std::endl;
+    std::cout << std::string(45, '-') << std::endl;
     ContactIndex("Enter the index u want to know about it :: ");
 }

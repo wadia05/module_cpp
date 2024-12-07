@@ -1,6 +1,6 @@
 #include <iostream>
 
-int main (int ac, char **av)
+int main(int ac, char **av)
 {
     int i;
     int j;
@@ -19,5 +19,5 @@ int main (int ac, char **av)
         std::cout << " ";
     }
     std::cout << std::endl;
-    return 0;   
+    return 0;
 }
