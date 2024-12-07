@@ -17,6 +17,7 @@ public:
     PhoneBook();
     void AddContact();
     void PrintAllContact();
+    void ContactIndex(const std::string &prompt);
 };
 
 std::string GetSubInput(std::string &input);

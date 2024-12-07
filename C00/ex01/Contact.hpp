@@ -20,7 +20,7 @@ private:
 public:
     Contact() : IsActive(false) {}
     bool is_valide() { return IsActive; }
-
+    void InedexContactPrint();
     void SetData();
     void print_contact(int i);
 };

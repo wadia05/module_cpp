@@ -35,6 +35,7 @@ int main()
         else if ("SEARCH" == input || "2" == input)
         {
             book.PrintAllContact();
+            
             std::cout << "SEARCH" << std::endl; 
         }
         else if ("EXIT" == input)
