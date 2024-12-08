@@ -18,7 +18,6 @@ private:
     void IsValideIpout(const std::string &prompt, std::string &input);
 
 public:
-    Contact() : IsActive(false) {}
     bool is_valide() { return IsActive; }
     void InedexContactPrint();
     void SetData();
