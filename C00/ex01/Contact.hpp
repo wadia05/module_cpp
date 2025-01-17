@@ -7,7 +7,8 @@
 
 class Contact
 {
-private:
+private://Access
+    // attributes
     bool IsActive;
     std::string FristName;
     std::string LastName;
@@ -18,6 +19,7 @@ private:
     void IsValideIpout(const std::string &prompt, std::string &input);
 
 public:
+    //methods
     bool is_valide() { return IsActive; }
     void InedexContactPrint();
     void SetData();

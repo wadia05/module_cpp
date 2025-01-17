@@ -1,5 +1,5 @@
-NAME = main
-SRCS = main.cpp
+NAME = claptrap
+SRCS = main.cpp ClapTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 GXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
