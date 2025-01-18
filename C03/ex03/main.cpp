@@ -14,6 +14,8 @@ int main()
     DiamondTrap d3(d2);
     
     // Test member functions
+    // std::cout << d2.<< std::endl; 
+
     d2.attack("target");  // Should use ScavTrap's attack
     d2.whoAmI();         // Should show both names
     d2.guardGate();      // From ScavTrap
