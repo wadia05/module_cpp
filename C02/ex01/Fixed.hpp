@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 class Fixed {
     private :
@@ -14,7 +15,8 @@ class Fixed {
         ~Fixed(); //destructor
         Fixed(const Fixed& other); //copy constructor
         Fixed& operator=(const Fixed& other); //copy assignment operator 
-        Fixed& operator<<(const Fixed& other); //copy assignment operator 
+
+        //assignment operator 
 
         Fixed(const int n); //default constructor
         Fixed(const float f); //default constructor
@@ -26,5 +28,6 @@ class Fixed {
         void setRawBits( int const raw );
 };
 
+std::ostream& operator<<(std::ostream& out, const Fixed& other);
 
 #endif

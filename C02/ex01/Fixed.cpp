@@ -24,26 +24,34 @@ Fixed& Fixed::operator=(const Fixed& other)
     }
     return *this;
 }
+std::ostream& operator<<(std::ostream& out, const Fixed& other)
+{
+    out << other.toFloat();
+    return out;
+}
 
 Fixed::Fixed(const int n)
 {
-    
+    // Just shift the int left by 8 bits
+    this->_value = n << this->_bitValue;
+    std::cout << "Int constructor called" << std::endl;
 }
 Fixed::Fixed(const float f)
 {
-
+    // Multiply by 256 and round to nearest int
+    this->_value = roundf(f * (1<<this->_bitValue));
+     std::cout << "float constructor called" << std::endl;
 }
 
 
 float  Fixed::toFloat (void) const
 {
-
+    return (float)this->_value / (1 << this->_bitValue);
 }
 int  Fixed::toInt (void) const
 {
-
+    return (this->_value >> this->_bitValue);
 }
-
 
 int Fixed::getRawBits(void) const 
 {
