@@ -43,11 +43,11 @@ Fixed::Fixed(const float f)
      std::cout << "float constructor called" << std::endl;
 }
 
-
 float  Fixed::toFloat (void) const
 {
     return (float)this->_value / (1 << this->_bitValue);
 }
+
 int  Fixed::toInt (void) const
 {
     return (this->_value >> this->_bitValue);
@@ -58,6 +58,7 @@ int Fixed::getRawBits(void) const
     std::cout << "getRawBits member function called" << std::endl;
     return this->_value;
 }
+
 void Fixed::setRawBits(int const raw)
 {
     std::cout << "setRawBits member function called" <<std::endl;

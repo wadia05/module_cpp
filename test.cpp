@@ -1,38 +1,53 @@
 #include <iostream>
-#include <string>
 
-class Person {
+class Fixed {
 private:
-    std::string name;
+    int _value; // Assuming _value is an integer representing the fixed-point value
 
 public:
     // Constructor
-    Person(const std::string& name) {
-        // Using 'this' to disambiguate between the parameter and the class member
-        this->name = name;
+    Fixed(int value) : _value(value) {}
+
+    // Pre-increment
+    Fixed& operator++() {
+        ++_value;
+        return *this;
     }
 
-    // Setter method
-    void setName(const std::string& name) {
-        this->name = name; // 'this->name' refers to the class member
+    // Post-increment
+    Fixed operator++(int) {
+        Fixed temp = *this;
+        ++_value;
+        return temp;
     }
 
-    // Method to display name
-    void display() const {
-        // Using 'this' to print the address of the current object
-        std::cout << "Name: " << this->name << ", Address: " << this << std::endl;
+    // Pre-decrement
+    Fixed& operator--() {
+        --_value;
+        return *this;
+    }
+
+    // Post-decrement
+    Fixed operator--(int) {
+        Fixed temp = *this;
+        --_value;
+        return temp;
+    }
+
+    // Function to get the value
+    int getValue() const {
+        return _value;
     }
 };
 
 int main() {
-    Person person1("Alice");
-    Person person2("Bob");
+    Fixed a(5);
+    Fixed b = ++a; // Pre-increment
+    std::cout << "Pre-increment: " << b.getValue() << std::endl; // Output: 6
 
-    person1.display(); // Output: Name: Alice, Address: 0x...
-    person2.display(); // Output: Name: Bob, Address: 0x...
-
-    person1.setName("Charlie");
-    person1.display(); // Output: Name: Charlie, Address: 0x...
+    Fixed c = a++; // Post-increment
+    std::cout << "Post-increment: " << c.getValue() << std::endl; // Output: 6
+    std::cout << "After Post-increment: " << a.getValue() << std::endl; // Output: 7
 
     return 0;
 }

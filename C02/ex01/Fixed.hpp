@@ -5,29 +5,30 @@
 #include <string>
 #include <cmath>
 
-class Fixed {
-    private :
-        int _value;
-        static const int _bitValue;
+class Fixed
+{
+private:
+    int _value;
+    static const int _bitValue;
 
-    public :
-        Fixed(); //default constructor
-        ~Fixed(); //destructor
-        Fixed(const Fixed& other); //copy constructor
-        Fixed& operator=(const Fixed& other); //copy assignment operator 
+public:
+    Fixed();                              // default constructor
+    ~Fixed();                             // destructor
+    Fixed(const Fixed &other);            // copy constructor
+    Fixed &operator=(const Fixed &other); // copy assignment operator
 
-        //assignment operator 
+    // assignment operator
 
-        Fixed(const int n); //default constructor
-        Fixed(const float f); //default constructor
-        
-        float toFloat( void ) const;
-        int toInt( void ) const;    
+    Fixed(const int n);   // default constructor
+    Fixed(const float f); // default constructor
 
-        int getRawBits( void ) const;
-        void setRawBits( int const raw );
+    float toFloat(void) const;
+    int toInt(void) const;
+
+    int getRawBits(void) const;
+    void setRawBits(int const raw);
 };
 
-std::ostream& operator<<(std::ostream& out, const Fixed& other);
+std::ostream &operator<<(std::ostream &out, const Fixed &other);
 
 #endif
