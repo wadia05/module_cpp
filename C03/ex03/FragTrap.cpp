@@ -12,6 +12,11 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name){
     this->_AttackDamage = 30;
     std::cout << "FragTrap parameterized constructor called" << std::endl;
 }
+FragTrap::FragTrap(std::string name ,int Hit_points, int Attack_damage): ClapTrap(name){
+    _HitPoints = Hit_points;
+    _AttackDamage = Attack_damage;
+    std::cout << "FragTrap parameterized constructor called" << std::endl;
+}
 
 FragTrap::~FragTrap ()
 {

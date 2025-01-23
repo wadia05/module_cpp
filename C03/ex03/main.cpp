@@ -6,7 +6,7 @@ int main()
     
     // Test default constructor
     DiamondTrap d1;
-    
+    d1.whoAmI();
     // Test named constructor
     DiamondTrap d2("Diamond");
     
@@ -16,7 +16,7 @@ int main()
     // Test member functions
     // std::cout << d2.<< std::endl; 
 
-    d2.attack("target");  // Should use ScavTrap's attack
+    d2.attack("GGG");  // Should use ScavTrap's attack
     d2.whoAmI();         // Should show both names
     d2.guardGate();      // From ScavTrap
     d2.highFivesGuys();  // From FragTrap

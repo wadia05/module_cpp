@@ -12,6 +12,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     this->_AttackDamage = 20;
     std::cout << "ScavTrap parameterized constructor called" << std::endl;
 }
+ScavTrap::ScavTrap(std::string name, int EnergyPoints) : ClapTrap(name) {
+    this->_EnergyPoints  = EnergyPoints;
+    std::cout << "ScavTrap parameterized constructor called" << std::endl;
+}
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {

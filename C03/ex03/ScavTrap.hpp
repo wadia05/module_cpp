@@ -1,8 +1,7 @@
 #ifndef SCAVTRAP_HPP
 #define SCAVTRAP_HPP
 
-#include <iostream>
-#include <string>
+
 #include "ClapTrap.hpp"
 
 class ScavTrap : virtual public ClapTrap {
@@ -14,6 +13,7 @@ class ScavTrap : virtual public ClapTrap {
         ~ScavTrap();
 
         ScavTrap(std::string name);
+        ScavTrap(std::string name, int EnergyPoints);
 
         void guardGate();
         void attack(const std::string& target);
