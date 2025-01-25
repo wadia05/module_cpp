@@ -1,5 +1,5 @@
 NAME = matial
-SRCS = main.cpp 
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp IMateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 GXX = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98

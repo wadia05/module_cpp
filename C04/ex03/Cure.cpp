@@ -1,18 +1,33 @@
 #include "Cure.hpp"
 
-Cure::Cure()
+Cure::Cure(): AMateria("cure")
 {
-
+     std::cout << "Cure destructor called" << std::endl;
 }
 Cure::~Cure()
 {
+    std::cout << "Cure destructor called" << std::endl;
+}
+Cure::Cure(const Cure& other) : AMateria(other)
+{
+    std::cout << "Cure copy constructor called" << std::endl;
+}
+Cure& Cure::operator=(const Cure& other) 
+{
+    if (this != &other)
+    {
+        AMateria::operator=(other);
+    }
+    return *this;
 
 }
-Cure::Cure(const Cure& other)
-{
 
+AMateria* Cure::clone() const
+{
+    return new Cure(*this);
 }
-Cure& Cure::operator=(const Cure& other)
-{
 
+void Cure::use(ICharacter& target)
+{
+     std::cout << "* shoots an Cure bolt at " << target.getName() << " *" << std::endl;
 }
