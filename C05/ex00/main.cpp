@@ -20,7 +20,7 @@ int main() {
     }
 
     try {
-        Bureaucrat b2("Bob", 148); // This will throw an exception
+        Bureaucrat b2("kok", 148); // This will throw an exception
         std::cout << b2 << std::endl;
         b2.radeTooLowException();
         std::cout << b2 << std::endl;
@@ -35,7 +35,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
     try {
-        Bureaucrat b3("Bob", 0); // This will throw an exception
+        Bureaucrat b3("sos", 0); // This will throw an exception
         std::cout << b3 << std::endl;
 
     }
@@ -43,7 +43,7 @@ int main() {
         std::cerr << "Exception: " << e.what() << std::endl;
     }
     try {
-        Bureaucrat b4("Bob", 151); // This will throw an exception
+        Bureaucrat b4("DPD", 151); // This will throw an exception
         std::cout << b4 << std::endl;
 
     }

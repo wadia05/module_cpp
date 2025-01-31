@@ -20,13 +20,30 @@ class Form{
         Form(std::string name, int sigG , int execG);
         ~Form();
         Form(const Form & other);
-        Form operator=(const Form & other);
+        Form& operator=(const Form & other);
         
-        void beSigned();
+        void beSigned(const Bureaucrat& bureaucrat);
 
-    
+        std::string getName() const;
+        bool getIsSigned() const;
+        int getSigbGreade() const;
+        int getExeuteGrade() const;
+
+        class GradeTooHighException : public std::exception {
+            public:
+                const char* what() const throw() {
+                    return "Grade is too high";
+                }
+        };
+        
+        class GradeTooLowException : public std::exception {
+            public:
+                const char* what() const throw() {
+                    return "Grade is too low";
+                }
+        };
 };
 
-
+std::ostream &operator<<(std::ostream &os, const Form &form);
 
 #endif

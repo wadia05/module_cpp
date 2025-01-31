@@ -1,54 +1,25 @@
-#include "Bureaucrat.hpp"
-// #include <iostream>
 
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 int main() {
     try {
-        Bureaucrat b1("Bob", 3);
-        b1.radeTooHighException();
-        std::cout << b1 << std::endl;
-        b1.radeTooHighException();
-        std::cout << b1 << std::endl;
-        b1.radeTooHighException();
-        std::cout << b1 << std::endl;
-        b1.radeTooHighException();
-        std::cout << b1 << std::endl;
- 
+        Bureaucrat highRank("High Rank", 1);
+        Bureaucrat lowRank("Low Rank", 150);
+        Form form1("Important Form", 100, 50);
+        Form form2("Very Important Form", 1, 1);
 
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
+        std::cout << form1 << std::endl;
+        std::cout << form2 << std::endl;
 
-    try {
-        Bureaucrat b2("Bob", 148); // This will throw an exception
-        std::cout << b2 << std::endl;
-        b2.radeTooLowException();
-        std::cout << b2 << std::endl;
-        b2.radeTooLowException();
-        std::cout << b2 << std::endl;
-        b2.radeTooLowException();
-        std::cout << b2 << std::endl;
-        b2.radeTooLowException();
-    
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-    try {
-        Bureaucrat b3("Bob", 0); // This will throw an exception
-        std::cout << b3 << std::endl;
+        lowRank.signForm(form1);  // Should fail
+        highRank.signForm(form1); // Should succeed
+        highRank.signForm(form2); // Should succeed
 
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
-    }
-    try {
-        Bureaucrat b4("Bob", 151); // This will throw an exception
-        std::cout << b4 << std::endl;
+        std::cout << form1 << std::endl;
+        std::cout << form2 << std::endl;
 
-    }
-    catch (const std::exception& e) {
-        std::cerr << "Exception: " << e.what() << std::endl;
+    } catch (std::exception& e) {
+        std::cout << "Exception: " << e.what() << std::endl;
     }
 
     return 0;
