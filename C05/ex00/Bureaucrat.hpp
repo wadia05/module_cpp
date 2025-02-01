@@ -22,9 +22,20 @@ class Bureaucrat{
         void radeTooLowException();
         std::string getName() const;
         int getGrade() const;
+        class GradeTooHighException : public std::exception {
+            public:
+                const char* what() const throw(){
+                    return "Grade is too high";
+                }
+        };
+        class GradeTooLowException : public std::exception {
+            public:
+                const char* what() const throw(){
+                    return "Grade is too low";
+                }
+        };
 
 };
-
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other);
 
 #endif
