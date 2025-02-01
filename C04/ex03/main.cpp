@@ -147,6 +147,6 @@ int main() {
         std::cerr << "Test Failed: " << e.what() << std::endl;
         return 1;
     }
-
+    while(1){};
     return 0;
 }
