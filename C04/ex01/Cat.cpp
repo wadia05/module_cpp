@@ -15,6 +15,7 @@ Cat::~Cat(){
 
 
 Cat::Cat(const Cat& other) : Animal(other) ,_brain(new Brain(*other._brain)){
+    this->_type = other._type;
 }
 
 Cat& Cat::operator=(const Cat& other)
@@ -22,15 +23,17 @@ Cat& Cat::operator=(const Cat& other)
     std::cout << "Cat Copy assignment operator called" << std::endl;
     if (this != &other)
     {
-        Animal::operator=(other);
-        *_brain = *other._brain;
+        delete this->_brain;
+        this->_type = other._type;
+        this->_brain = new Brain(*other._brain);
     }
     else
         std::cout << "YOU assignment the same Object" << std::endl;
     return *this;
 }
 
-void Cat::makeSound ()
+
+void Cat::makeSound () const
 {
     std::cout << "I am cat miiyaaaw" << std::endl;
 }

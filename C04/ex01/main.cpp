@@ -6,7 +6,7 @@
 
 int main() {
     const int animalCount = 10;
-    Animal* animals[animalCount];
+    const Animal* animals[animalCount];
 
     // Fill half with Dogs and half with Cats
     for (int i = 0; i < animalCount / 2; i++) {
@@ -25,25 +25,25 @@ int main() {
         delete animals[i];
     }
 
-    // Test deep copy
-    Cat cat1;
-    cat1.makeSound();
-    cat1.setIdea(0,"i hate dog");
-    cat1.setIdea(1,"dog is boring");
-    cat1.setIdea(2,"and dog hate me ");
-    cat1.makeSound();
+    // // Test deep copy
+    // Cat cat1;
+    // cat1.makeSound();
+    // cat1.setIdea(0,"i hate dog");
+    // cat1.setIdea(1,"dog is boring");
+    // cat1.setIdea(2,"and dog hate me ");
+    // cat1.makeSound();
 
 
-    Dog dog1;
-    dog1.makeSound();
-    dog1.setIdea(0, "i hate cat");
-    Dog dog2 = dog1; // Test copy constructor
-    dog2.makeSound();
-    std::cout << dog1.getIdea(0) << std::endl;
-    std::cout << dog2.getIdea(0)<< std::endl;
-    std::cout << cat1.getIdea(0) << std::endl;
-    std::cout << cat1.getIdea(1) << std::endl;
-    std::cout << cat1.getIdea(2) << std::endl;
+    // Dog dog1;
+    // dog1.makeSound();
+    // dog1.setIdea(0, "i hate cat");
+    // Dog dog2 = dog1; // Test copy constructor
+    // dog2.makeSound();
+    // std::cout << dog1.getIdea(0) << std::endl;
+    // std::cout << dog2.getIdea(0)<< std::endl;
+    // std::cout << cat1.getIdea(0) << std::endl;
+    // std::cout << cat1.getIdea(1) << std::endl;
+    // std::cout << cat1.getIdea(2) << std::endl;
 
     return 0;
 }

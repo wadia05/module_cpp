@@ -9,10 +9,10 @@ class Animal{
         std::string _type;
     public :
         Animal();
-        virtual ~Animal() = 0;
+        virtual ~Animal();
         Animal(const Animal& other);
         Animal& operator=(const Animal& other);
-        virtual void makeSound() = 0;
+        virtual void makeSound() const = 0;
         void getType();
 };
 

@@ -17,9 +17,7 @@ Cure& Cure::operator=(const Cure& other)
 {
     if (this != &other)
     {
-        // AMateria::operator=(other);
         this->type = other.type;
-        
     }
     return *this;
 

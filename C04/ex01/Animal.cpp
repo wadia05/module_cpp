@@ -13,7 +13,7 @@ Animal::~Animal()
 
 Animal& Animal::operator=(const Animal& other)
 {
-    if (this == &other)
+    if (this != &other)
     {
         this->_type = other._type;
     }
@@ -27,13 +27,13 @@ Animal::Animal(const Animal& otehr)
 }
 
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
-    std::cout << "I am  the parent" << std::endl;
+    std::cout << "I am all" << std::endl;
 }
 
-void Animal::getType ()
+std::string Animal::getType () const
 {
-    std::cout <<"Animal Type == " + _type <<std::endl;
+    return this->_type;
 }
 

@@ -8,18 +8,18 @@ Ice::~Ice()
 {
     std::cout << "Ice destructor called" << std::endl;
 }
-Ice::Ice(const Ice& other) : AMateria(other)
+Ice::Ice(const Ice& other)
 {
+    this->type = other.type;
     std::cout << "Ice copy constructor called" << std::endl;
 }
 Ice& Ice::operator=(const Ice& other) 
 {
     if (this != &other)
     {
-        AMateria::operator=(other);
+        this->type = other.type;
     }
     return *this;
-
 }
 
 AMateria* Ice::clone() const

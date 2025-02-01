@@ -36,17 +36,17 @@ Fixed::Fixed(const int n)
     this->_value = n << this->_bitValue;
     std::cout << "Int constructor called" << std::endl;
 }
-Fixed::Fixed(const float f)
-{
-    // Multiply by 256 and round to nearest int
-    this->_value = roundf(f * (1<<this->_bitValue));
-     std::cout << "float constructor called" << std::endl;
-}
+    Fixed::Fixed(const float f)
+    {
+        // Multiply by 256 and round to nearest int
+        this->_value = roundf(f * (1<<this->_bitValue));
+        std::cout << "float constructor called" << std::endl;
+    }
 
-float  Fixed::toFloat (void) const
-{
-    return (float)this->_value / (1 << this->_bitValue);
-}
+    float  Fixed::toFloat (void) const
+    {
+        return (float)this->_value / (1 << this->_bitValue);
+    }
 
 int  Fixed::toInt (void) const
 {

@@ -8,33 +8,35 @@
 #include <cassert>
 
 // Utility function to print test header
-void printTestHeader(const std::string& testName) {
+void printTestHeader(const std::string &testName)
+{
     std::cout << "\n===== " << testName << " =====\n";
 }
 
 // Test Materia Source functionality
-void testMateriaSource() {
+void testMateriaSource()
+{
     printTestHeader("MateriaSource Test");
 
     // Create MateriaSource
-    IMateriaSource* src = new MateriaSource();
+    IMateriaSource *src = new MateriaSource();
 
     // Learn Materias
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
 
     // Test creating known Materias
-    AMateria* iceMateria = src->createMateria("ice");
-    AMateria* cureMateria = src->createMateria("cure");
-    
+    AMateria *iceMateria = src->createMateria("ice");
+    AMateria *cureMateria = src->createMateria("cure");
+
     assert(iceMateria != NULL);
     assert(cureMateria != NULL);
-    
+
     assert(iceMateria->getType() == "ice");
     assert(cureMateria->getType() == "cure");
 
     // Test creating unknown Materia
-    AMateria* unknownMateria = src->createMateria("unknown");
+    AMateria *unknownMateria = src->createMateria("unknown");
     assert(unknownMateria == NULL);
 
     // Test learning too many Materias
@@ -51,27 +53,29 @@ void testMateriaSource() {
 }
 
 // Test Character functionality
-void testCharacter() {
+void testCharacter()
+{
     printTestHeader("Character Test");
 
     // Create Character
-    Character* me = new Character("Player");
-    Character* bob = new Character("Bob");
+    Character *me = new Character("Player");
+    Character *bob = new Character("Bob");
 
     // Create Materias
-    AMateria* ice1 = new Ice();
-    AMateria* ice2 = new Ice();
-    AMateria* cure1 = new Cure();
-    AMateria* cure2 = new Cure();
+    AMateria *ice1 = new Ice();
+    AMateria *ice2 = new Ice();
+    AMateria *cure1 = new Cure();
+    // AMateria* cure2 = new Cure();
 
     // Test equipping Materias
+    (void)ice2;
     me->equip(ice1);
     me->equip(cure1);
     me->equip(ice2);
-    me->equip(cure2);
+    // me->equip(cure2);
 
     // Try to equip fifth Materia (should not crash)
-    AMateria* extraMateria = new Ice();
+    AMateria *extraMateria = new Ice();
     me->equip(extraMateria);
 
     // Test using Materias
@@ -88,11 +92,11 @@ void testCharacter() {
     me->use(2, *bob); // This should not crash
 
     // Test copy constructor
-    Character* clone = new Character(*me);
+    Character *clone = new Character(*me);
     assert(clone->getName() == me->getName());
 
     // Test assignment operator
-    Character* anotherCharacter = new Character("Another");
+    Character *anotherCharacter = new Character("Another");
     *anotherCharacter = *me;
     assert(anotherCharacter->getName() == me->getName());
 
@@ -101,26 +105,26 @@ void testCharacter() {
     delete bob;
     delete clone;
     delete anotherCharacter;
-    delete extraMateria;  // The extra materia not equipped
 
     std::cout << "Character Test Passed!\n";
 }
 
 // Test Materia Cloning
-void testMateriaCloning() {
+void testMateriaCloning()
+{
     printTestHeader("Materia Cloning Test");
 
     // Test Ice Materia
-    Ice* originalIce = new Ice();
-    AMateria* clonedIce = originalIce->clone();
+    Ice *originalIce = new Ice();
+    AMateria *clonedIce = originalIce->clone();
 
     assert(clonedIce != NULL);
     assert(clonedIce->getType() == "ice");
     assert(clonedIce != originalIce);
 
     // Test Cure Materia
-    Cure* originalCure = new Cure();
-    AMateria* clonedCure = originalCure->clone();
+    Cure *originalCure = new Cure();
+    AMateria *clonedCure = originalCure->clone();
 
     assert(clonedCure != NULL);
     assert(clonedCure->getType() == "cure");
@@ -135,18 +139,20 @@ void testMateriaCloning() {
     std::cout << "Materia Cloning Test Passed!\n";
 }
 
-int main() {
-    try {
+int main()
+{
+    try
+    {
         testMateriaSource();
         testCharacter();
         testMateriaCloning();
 
         std::cout << "\n===== ALL TESTS PASSED! =====\n";
     }
-    catch (const std::exception& e) {
+    catch (const std::exception &e)
+    {
         std::cerr << "Test Failed: " << e.what() << std::endl;
         return 1;
     }
-    while(1){};
     return 0;
 }

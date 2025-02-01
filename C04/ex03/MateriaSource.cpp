@@ -2,33 +2,33 @@
 
 MateriaSource::MateriaSource()
 {
-    for (int i = 0 ; i < 4 ; i++)
-        this->_materias[i]= NULL;
+    for (int i = 0; i < 4; i++)
+        this->_materias[i] = NULL;
 }
 
-MateriaSource::MateriaSource(const MateriaSource& other) : IMateriaSource(other) // Add base class initialization
+MateriaSource::MateriaSource(const MateriaSource &other) : IMateriaSource(other) // Add base class initialization
 {
-    for (int i = 0 ; i < 4 ; i++)
+    for (int i = 0; i < 4; i++)
     {
-        if(other._materias[i])
-            this->_materias[i]= other._materias[i]->clone();
+        if (other._materias[i])
+            this->_materias[i] = other._materias[i]->clone();
         else
             this->_materias[i] = NULL;
     }
 }
-MateriaSource& MateriaSource::operator=(const MateriaSource& other)
+MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
-    if(this != &other)
+    if (this != &other)
     {
-        for (int i = 0 ; i < 4 ; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (this->_materias[i])
                 delete this->_materias[i];
         }
-        for (int i = 0 ; i < 4 ; i++)
+        for (int i = 0; i < 4; i++)
         {
-            if(other._materias[i])
-                this->_materias[i]= other._materias[i]->clone();
+            if (other._materias[i])
+                this->_materias[i] = other._materias[i]->clone();
             else
                 this->_materias[i] = NULL;
         }
@@ -37,31 +37,34 @@ MateriaSource& MateriaSource::operator=(const MateriaSource& other)
 }
 MateriaSource::~MateriaSource()
 {
-    for (int i = 0 ; i < 4 ; i++)
+    for (int i = 0; i < 4; i++)
     {
         if (this->_materias[i])
             delete this->_materias[i];
     }
 }
 
-
-void MateriaSource::learnMateria(AMateria* m)
+void MateriaSource::learnMateria(AMateria *m)
 {
-    if (!m) return;
-    for(int i = 0 ; i < 4; i++)
+    if (!m)
+        return;
+    for (int i = 0; i < 4; i++)
     {
-        if(!this->_materias[i])
+        if (!this->_materias[i])
         {
             this->_materias[i] = m;
             return;
         }
     }
+    delete m;
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type)
+AMateria *MateriaSource::createMateria(std::string const &type)
 {
-    for (int i = 0; i < 4; i++) {
-        if (this->_materias[i] && this->_materias[i]->getType() == type) {
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->_materias[i] && this->_materias[i]->getType() == type)
+        {
             return this->_materias[i]->clone();
         }
     }

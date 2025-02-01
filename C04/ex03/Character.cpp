@@ -1,90 +1,143 @@
 #include "Character.hpp"
 
-Character::Character()
+Character::Character() : _name(""), head(NULL)
 {
-    _name = "";
-    for(int i = 0;  i<4 ;i++)
-        _inventory[i]=NULL;
-}
-Character::Character(std::string const & name) : _name(name)
-{
-    for(int i = 0;  i<4 ;i++)
-        _inventory[i]=NULL;
-
+    for(int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
 }
 
-Character::Character(const Character& other) : _name(other._name)
+Character::Character(std::string const & name) : _name(name), head(NULL)
+{
+    for(int i = 0; i < 4; i++)
+        _inventory[i] = NULL;
+}
+
+Character::Character(const Character& other) : _name(other._name), head(NULL)
 {
     for (int i = 0; i < 4; i++)
     {
-        if(_inventory[i])
-            _inventory[i]->clone();
+        if (other._inventory[i])
+            _inventory[i] = other._inventory[i]->clone();
         else
-            _inventory[i]=NULL;
+            _inventory[i] = NULL;
     }
+    copyLinkedList(other);
 }
+
 Character& Character::operator=(const Character& other)
 {
     if (this != &other)
     {
-        for(int i = 0;  i<4 ;i++)
-        {
-            if(_inventory[i])
-                delete _inventory[i];
-        }
         _name = other._name;
+        clearInventory();
+        clearLinkedList();
         for (int i = 0; i < 4; i++)
         {
-            if(_inventory[i])
-                _inventory[i]->clone();
+            if (other._inventory[i])
+                _inventory[i] = other._inventory[i]->clone();
             else
                 _inventory[i] = NULL;
         }
+        copyLinkedList(other);
     }
     return *this;
 }
+
 Character::~Character()
 {
-    for(int i = 0;  i<4 ;i++)
-    {
-        if(_inventory[i])
-            delete _inventory[i];
-    }
-
+    clearInventory();
+    clearLinkedList();
 }
-
 
 std::string const & Character::getName() const
 {
-    return this->_name;
+    return _name;
 }
-void Character::equip(AMateria* m) 
+
+void Character::equip(AMateria* m)
 {
     if (!m) return;
-    for(int i = 0 ; i < 4; i++)
+    for(int i = 0; i < 4; i++)
     {
         if(!_inventory[i])
         {
             _inventory[i] = m;
+            std::cout <<"loooo ==" << &_inventory << std::endl;
             return;
         }
     }
 }
-void Character::unequip(int idx) 
-{
-    if (idx < 0 || idx >= 4|| !_inventory[idx])
-    {
-        std::cout << "Wong index 1" << std::endl;
-        return ;
-    }
-    _inventory[idx]= NULL;
-}
-void Character::use(int idx, ICharacter& target){
 
-    if (idx < 0 || idx >= 4|| !_inventory[idx])
+void Character::unequip(int idx)
+{
+    if (idx < 0 || idx >= 4 )
     {
-        std::cout << "Wong index 2" << std::endl;
+        std::cout << "Wrong index 1" << std::endl;
+        return;
+    }
+    add(_inventory[idx]);
+    std::cout <<"adddd =="<< &_inventory << std::endl;
+    _inventory[idx] = NULL;
+}
+
+void Character::use(int idx, ICharacter& target)
+{
+    if (idx < 0 || idx >= 4 || !_inventory[idx])
+    {
+        std::cout << "Wrong index 2" << std::endl;
         return;
     }
     _inventory[idx]->use(target);
+}
+
+void Character::add(AMateria* mat)
+{
+    Node* newnode = new Node();
+    newnode->material = mat;
+    newnode->next = NULL;
+
+    if (head == NULL) {
+        head = newnode;
+    } else {
+        Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+    }
+}
+
+void Character::clearInventory()
+{
+    for(int i = 0; i < 4; i++)
+    {
+        if(_inventory[i])
+        {
+            delete _inventory[i];
+            _inventory[i] = NULL;
+        }
+    }
+}
+
+void Character::clearLinkedList()
+{
+    Node* current = head;
+    while (current != NULL)
+    {
+        Node* next = current->next;
+        delete current->material;
+        delete current;
+        current = next;
+    }
+    head = NULL;
+}
+
+void Character::copyLinkedList(const Character& other)
+{
+    Node* current = other.head;
+    while (current != NULL)
+    {
+        add(current->material->clone());
+        current = current->next;
+    }
 }

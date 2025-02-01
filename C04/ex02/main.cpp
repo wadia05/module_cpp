@@ -1,13 +1,12 @@
 
-// File: main.cpp
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <iostream>
 
 int main() {
     const int animalCount = 10;
-    Animal* animals[animalCount];
-    
+    const Animal* animals[animalCount];
+
     // Fill half with Dogs and half with Cats
     for (int i = 0; i < animalCount / 2; i++) {
         animals[i] = new Dog();
